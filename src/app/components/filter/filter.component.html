@@ -1,0 +1,21 @@
+<div class="container mt-3 px-2 px-lg-5">
+  <div class="d-lg-flex flex-lg-col flex-row justify-content-center align-items-center gap-3">
+    <div class="input-group input-group-lg w-lg-25 w-100">
+      <span class="input-group-text l-tb-rad bg-transparent"><i class="bi bi-search"></i></span>
+      <input type="text" class="form-control r-tb-rad py-2" (ngModel)="facilityName" placeholder="Nama Fasilitas">
+    </div>
+    <div class="w-100 w-lg-25 my-3">
+      <select class="form-select select-custom rounded-pill px-4" (ngModel)="facilityType">
+        <option value="" disabled selected>Pilih Tipe Fasilitas</option>
+        <option value="1">One</option>
+        <!-- Add other options as necessary -->
+      </select>
+    </div>
+    <div class="w-lg-25 w-50">
+      <button type="button" class="custom-btn btn bg-primary w-100 text-white" (click)="onSearchClick()">Cari Fasilitas</button>
+    </div>
+  </div>
+  <hr>
+</div>
+
+  

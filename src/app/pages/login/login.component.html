@@ -1,0 +1,62 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-6 bg-primary p-5 min-vh-100 d-none d-lg-block round-login">
+            <img src="./assets/img/Building-blocks.png" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-6">
+            <div class="min-vh-100 d-flex justify-content-center align-items-center">
+                <main class="form-signin w-75 m-auto">
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                        <div >                           
+                            <h3 class="fw-bold font-base mb-2">Login Akun</h3>
+                            <p>Belum punya akun ? <a routerLink="/register" class="text-decoration-none">Daftar Disini</a></p>
+                        </div>
+                      @if(isInvalid){
+                        <div class="alert alert-dismissible alert-custom fade show" role="alert">
+                          <small>{{msgErr}}</small>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="closeAlert()"></button>
+                       </div>
+                      }
+                      <div class="form-floating mt-2">
+                        <input type="email" class="form-control" 
+                        [ngClass]="this.isInvalid ? 'is-invalid': ''" 
+                        id="floatingInput" 
+                        [class.is-invalid]="email?.errors?.['email']"
+                        placeholder="name@example.com" 
+                        formControlName="email">
+                        <label for="floatingInput">Email address</label>
+                      </div>
+
+                      <small [ngClass]="email?.errors?.['email'] ?  'text-danger':'opacity-0' ">email tidak valid</small>
+                    
+                     
+                      <div class="input-group mt-1">
+                        <div class="form-floating">
+                          <input 
+                          [type]="toggle ? 'password': 'text'" 
+                          class="form-control" 
+                          [ngClass]="this.isInvalid ? 'is-invalid': ''" placeholder="password" id="floatingInputGroup1" formControlName="password"
+                          [class.is-invalid]="password?.errors?.['minlength']"
+                          >
+                          <label for="floatingInputGroup1">Password</label>
+                        </div>
+                        <span class="input-group-text bg-transparent" [ngClass]="this.isInvalid ? 'border-danger': ''" (click)="ontogglePassword()">
+                          @if(toggle){
+                            <i class="bi bi-eye-slash-fill"></i>
+                          }@else{
+                            <i class="bi bi-eye-fill"></i>
+                          }
+                         </span>
+                      </div>
+                      <div class="h-10 mb-2">
+                        <small [ngClass]="password?.errors?.['minlength'] ?  'text-danger':'opacity-0' "> Password Harus 6 Karakter</small>
+                      </div>
+                  
+                      <button class="btn btn-primary w-100 py-2 rounded-pill font-secondary" type="submit">Login</button>
+                    </form>
+                  </main>
+            </div>
+           
+        </div>
+    </div>
+</div>

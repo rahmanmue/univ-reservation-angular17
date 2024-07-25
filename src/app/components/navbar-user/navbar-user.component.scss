@@ -1,0 +1,27 @@
+.border-base {
+    border-color: #034C62 !important;
+  }
+
+.navbar {
+	color: #034C62;
+}
+
+.btn {
+    background-color: #034C62; /* Warna dasar tombol */
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    transition: background-color 0.3s ease; /* Transisi halus untuk warna */
+}
+
+.btn:hover {
+background-color: #012f3d; /* Warna saat dihover, sedikit lebih gelap */
+}
+
+.btn svg {
+fill: white; /* Warna ikon tetap putih */
+}

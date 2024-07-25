@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.mat-stepper-horizontal {
+    margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+    margin-top: 16px;
+}
+
+::ng-deep .button-next,
+::ng-deep .button-back,
+::ng-deep .button-submit,
+::ng-deep .button-prev{
+    margin-top: 40px;
+    background-color: #034C62 !important;
+    color: white !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+::ng-deep .button-back {
+    margin-top: 40px;
+    background-color: #034C62 !important;
+    color: white !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+form {
+    color: #034C62;
+}
+
+.link-base {
+    color: #034C62;
+}

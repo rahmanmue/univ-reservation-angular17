@@ -1,0 +1,136 @@
+.btn {
+    background-color: #034C62; /* Warna dasar tombol */
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    transition: background-color 0.3s ease; /* Transisi halus untuk warna */
+}
+
+
+
+.card:hover {
+    box-shadow: 0 2px 4px #034C62; /* Drop shadow saat di-hover */
+  }
+  
+.card {
+transition: box-shadow 0.3s ease-in-out; /* Animasi transisi untuk shadow */
+}
+
+.pagination-outer{ text-align: center; }
+.pagination{
+    display: inline-flex;
+    position: relative;
+}
+.pagination li a.page-link{
+    color: #034C62;
+    background: #eee;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 40px;
+    height: 40px;
+    width: 35px;
+    padding: 0;
+    margin: 0 7px;
+    border: none;
+    border-radius: 10px;
+    display: block;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s ease 0s;
+}
+.pagination li:first-child a.page-link,
+.pagination li:last-child a.page-link{
+    color: #777;
+    font-size: 25px;
+    line-height: 35px;
+}
+.pagination li a.page-link:hover,
+.pagination li a.page-link:focus,
+.pagination li.active a.page-link:hover,
+.pagination li.active a.page-link{
+    color: #fff;
+    background: #034C62;
+    line-height: 47px;
+}
+.pagination li a.page-link:before{
+    content: '';
+    background-color: #fff;
+    border-radius: 30px;
+    opacity: 0;
+    transform-origin: top right;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    right: 5px;
+    bottom: 0;
+    z-index: -1;
+    transition: all 0.3s ease 0s;
+}
+.pagination li a.page-link:hover:before,
+.pagination li a.page-link:focus:before,
+.pagination li.active a.page-link:hover:before,
+.pagination li.active a.page-link:before{
+    opacity: 1;
+    transform: scale(0.15);
+}
+@media only screen and (max-width: 480px){
+    .pagination{
+        font-size: 0;
+        display: inline-block;
+    }
+    .pagination li{
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-controls button {
+    margin: 0 10px;
+    padding: 5px 10px;
+  }
+  
+  .pagination-controls span {
+    font-weight: bold;
+  }
+
+
+  .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-fixed {
+    height: 200px; /* Sesuaikan dengan tinggi gambar yang diinginkan */
+    object-fit: cover; /* Memastikan gambar tetap proporsional */
+}
+
+.card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-height: 3em; /* Membatasi tinggi untuk menjaga konsistensi */
+}
+
+.card-body > .mt-auto {
+    margin-top: auto;
+}
+
+  

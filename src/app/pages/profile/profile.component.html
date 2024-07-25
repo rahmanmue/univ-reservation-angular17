@@ -1,0 +1,79 @@
+<app-template-user>
+
+    <div class="container px-5 py-5">
+
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="row my-3">
+            <div class="col-lg-4 col-sm-12">
+                <div class="p-4 mb-3 bg-primary shadow-sm text-white rounded text-center">
+                    @if(previewUrl == null){
+                        <img src="{{this.photoProfile}}" [alt]="" class="img-fluid rounded-circle w-50 ">
+                    }@else {
+                        <img [src]="previewUrl" [alt]="" class="img-fluid rounded-circle w-50 ">
+                    }
+                    <div class="d-flex flex-column gap-2 justify-content-center my-3">
+                        <input type="file" accept="image/png, image/gif, image/jpeg" name="file" id="file" class="inputfile" (change)="onFileChange($event)" />
+                        <label for="file"> <i class="bi bi-upload fw-bold me-2"></i> Choose a file</label>
+                    </div> 
+                </div>
+                
+            </div>
+            <div class="col-lg-8 col-sm-12">               
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="nim" >
+                        <label>NIM</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control"  formControlName="fullName" >
+                        <label>Nama Lengkap</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="date" class="form-control"  formControlName="dateofbirth">
+                        <label>Tanggal Lahir</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" 
+                        [class.is-invalid]="phone?.errors"
+                        formControlName="phone" >
+                        <label>Nomor Telepon</label>
+                    </div>
+                    <small [ngClass]="phone?.errors ?  'text-danger':'opacity-0'" >nomor telepon harus berupa angka dan 12 digit</small>
+
+                    
+                    <button type="submit" class="btn btn-outline-primary col-12 mt-3">Update Profile</button>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-lg-8 offset-lg-4 col-sm-12">
+               <form [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
+                   <div class="input-group mt-4">
+                       <div class="form-floating">
+                         <input 
+                         [type]="toggle ? 'password': 'text'" class="form-control" 
+                         [ngClass]="this.isInvalid ? 'is-invalid': ''" placeholder="password" 
+                         id="floatingInputGroup1" 
+                         [class.is-invalid]="password?.errors?.['minlength']"
+                         formControlName="password"
+                         >
+                         <label for="floatingInputGroup1">Password Baru</label>
+                       </div>
+                       <span class="input-group-text bg-transparent" [ngClass]="this.isInvalid ? 'border-danger': ''"  (click)="ontogglePassword()">
+                         @if(toggle){
+                           <i class="bi bi-eye-slash-fill"></i>
+                         }@else{
+                           <i class="bi bi-eye-fill"></i>
+                         }
+                        </span>
+                   </div>
+                   <small [ngClass]="password?.errors?.['minlength'] ?  'text-danger':'opacity-0' ">Password Harus 6 Karakter</small>
+                   <button class="btn btn-outline-primary w-100 mt-3">Ganti Password</button>
+               </form>
+    
+            </div>
+
+        </div>
+        
+    </div>
+
+</app-template-user>
+

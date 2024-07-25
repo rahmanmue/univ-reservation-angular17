@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+html, body { height: 100%; }
+body { margin: 0;}
+
+$font-family-base: 'Poppins', 'Montserrat',sans-serif;
+$font-family-secondary: 'Kavoon', sans-serif;
+$input-focus-box-shadow: none !important;
+$primary: #034C62;
+$danger: #dd3d4d;
+$warning: #ecb534;
+$info: #38cdac;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body{
+    background-color: #fff;
+}
+
+.font-base{
+    font-family: $font-family-base;
+}
+
+
+.font-secondary{
+    font-family: $font-family-secondary;
+}
+
+.font-pop {
+    font-family: 'Poppins', sans-serif;
+}
+
+.font-kav {
+    font-family: 'Kavoon', cursive;
+}
+
+.bg-base{
+    background-color: #034C62;
+    // background-color: rgba(3, 76, 98, 0.75);
+}
+

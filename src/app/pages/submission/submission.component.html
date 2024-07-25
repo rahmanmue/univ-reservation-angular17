@@ -1,0 +1,124 @@
+<app-template-user>
+  <div class="container font-pop my-4">
+    <h4 class="mb-4">Submission Form</h4>
+    <mat-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup" class="row g-3">
+          <ng-template matStepLabel>Fill out your data</ng-template>
+          <div class="rounded-3 border row g-3 pb-4 mt-5 row-gap-1 d-flex justify-content-between">
+            <h5>Data Verification</h5>
+            <!-- Add form fields here -->
+            <div class="col-md-6">
+              <div class="row px-4 gap-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" formControlName="name" id="colFormLabel" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row px-4 gap-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Phone</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" formControlName="phone" id="colFormLabel" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row px-4 gap-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Model</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" formControlName="model" id="colFormLabel" placeholder="" value="Minjam">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row px-4 gap-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Admission</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" formControlName="admission" id="colFormLabel" placeholder="" value="Rent">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row px-4 gap-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Facility</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" formControlName="facility" id="colFormLabel" required>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button mat-button matStepperNext class="button-next">Next</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" label="Fill out your request" class="bg-base">
+        <form [formGroup]="secondFormGroup" class="row g-3" (ngSubmit)="onSubmit()">
+          <div class="rounded-3 border row g-3 pb-4 mt-5 row-gap-1 d-flex justify-content-between">
+            <h5>Data Verification</h5>
+            <!-- Add form fields here -->
+            <div class="col-md-6">
+              <div class="row px-4 gap-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" formControlName="name" id="colFormLabel" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row px-4 gap-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Quantity</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" formControlName="quantity" id="colFormLabel" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row px-4 gap-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Start Date</label>
+                <div class="col-sm-8">
+                  <input type="date" class="form-control" formControlName="startDate" id="colFormLabel" placeholder="" min={{nowDate()}} (change)="onChangeEndDate($event)" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row px-4 gap-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">End Date</label>
+                <div class="col-sm-8">
+                  <input type="date" class="form-control" formControlName="endDate" id="colFormLabel" placeholder="" min={{endDate}} required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row px-4 gap-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Upload Document</label>
+                <div class="col-sm-8">
+                  <input type="file" class="form-control" (change)="onFileChange($event)" accept=".pdf, .docx, .xlsx, .xls" required formControlName="uploadDocs">
+                </div>
+              </div>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious class="button-next">Back</button>
+              <button mat-button class="button-next" type="submit">Submit</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <div class="p-5">
+          <h4 class="text-success pt-3">Submission Successful!</h4>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16" width="64" height="64">
+            <path d="M16 8a8 8 0 1 1-16 0 8 8 0 0 1 16 0zM4.97 8.03a.75.75 0 0 0-1.08.02L1.47 10.53a.75.75 0 0 0 1.06 1.06L5 9.06a.75.75 0 0 0 1.08-.02L12.03 3a.75.75 0 1 0-1.08-1.06L5 8.94l-.03.03z"/>
+          </svg>
+          <p class="pt-5">Please check your status on your <a class="link-base link-offset-2" routerLink="/profile">profile</a> menu</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button mat-button matStepperPrevious class="button-next">Back</button>
+          <button mat-button (click)="stepper.reset()" class="button-next">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</app-template-user>

@@ -1,0 +1,27 @@
+<app-template-user>
+  <div class="container">
+    <div *ngIf="historyData">
+      <div class="row my-5">
+        <div class="col-12 col-md-6 mb-4" *ngFor="let item of historyData">
+          <div class="card">
+            <div class="card-header">
+              Transaction Details
+            </div>
+            <div class="card-body">
+              <!-- <p><strong>Transaction ID:</strong> {{ item.id }}</p> -->
+              <p><strong>Name:</strong> {{ item.name }}</p>
+              <div *ngFor="let item of item.transactionDetailDTO">
+                <p><strong>Facility:</strong> {{ item.name }}</p>
+                <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+              </div>
+              <p><strong>Start Date:</strong> {{ item.dateReservation | date : 'dd-MM-yyyy'}}</p>
+              <p><strong>End Date:</strong> {{ item.dateReturn | date : 'dd-MM-yyyy'}}</p>
+              <p><strong>Status:</strong> {{ getStatusDisplay(item.status) }}</p>
+              <p><strong>Document:</strong> <a [href]="item.document">Download</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-template-user>

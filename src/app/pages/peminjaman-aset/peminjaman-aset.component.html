@@ -1,0 +1,126 @@
+<app-template-admin>
+    <div class="container py-4">
+      
+      <div class="bg-white p-3 rounded shadow">
+        
+        <div class="input-group mt-3 mb-4 w-lg-50 w-md-50 w-50 w-sm-100 mt-3">
+          <input type="text" class="form-control" placeholder="Cari berdasarkan nama"  aria-describedby="basic-addon2" (change)="onChangeSearch($event)">
+          <span class="input-group-text bg-info text-white" role="button" (click)="refresh()"><i class="bi bi-arrow-clockwise"></i></span>
+          <span class="input-group-text bg-primary text-white" role="button" id="basic-addon2" (click)="onClickSearch()">Cari</span>
+        </div>
+          
+       
+        @if(totalElements != 0){
+          <div class="height-custom table-responsive">
+            <table class="table rounded">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col" class="text-center">Document</th>
+                  <th scope="col" class="text-center">Status</th>
+                  <th scope="col" class="text-center">Informasi</th>
+                </tr>
+              </thead>
+              <tbody>
+              @for( item of reservation; track $index) {
+                <tr>
+                  <th scope="row">{{page * size + $index + 1}}</th>
+                  <td>{{item.name}}</td>
+                  <td>{{item.subject}}</td>
+                  <td class="text-center">
+                    <a [href]="item.document" class="btn btn-outline-primary">
+                        <i class="bi bi-file-earmark-arrow-down-fill"></i> 
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    {{item.status | statusReservation}}
+                  </td>
+                
+                  <td class="">
+                    <div class="d-flex gap-2 justify-content-center">
+                      <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onClickDetail(item)">
+                        <small>Detail Pengajuan</small>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              }
+              </tbody>
+            </table>
+          </div>
+          <app-pagination 
+          [size]="size"
+          [page]="page"
+          [totalElements]="totalElements"
+          (pageChange)="onPageChange($event)"
+        ></app-pagination>
+        }@else {
+          <div class="d-flex flex-column justify-content-center">
+            <img src="./assets/img/no-data.png" class="img-fluid w-25 mx-auto mt-3" alt="no data">
+            <h5 class="text-center">Tidak Ada Data</h5>
+          </div>
+        }  
+       
+      </div>
+       
+
+
+
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Peminjaman</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h5 class="card-title mb-2">Subject</h5>
+            {{detailItem?.subject}}
+            <div class="card mt-3">
+              <div class="card-body">
+                <h5 class="card-title">{{facility?.name}}</h5>
+                <p class="card-text"><small class="text-body-secondary"> {{facility?.availability?.name | availability}} </small></p>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Tanggal Peminjaman</td>
+                      <td class="px-2">:</td>
+                      <td >{{detailItem?.dateReservation | date}}</td>
+                    </tr>
+                    <tr>
+                      <td>Tanggal Kembali</td>
+                      <td class="px-2">:</td>
+                      <td >{{detailItem?.dateReturn | date}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                <h6 class="card-text mt-3">Ubah Status Pengajuan </h6>
+                <select class="form-select" aria-label="Default select example" (change)="onChangeSelect($event)">
+                  <option selected>Open this select menu</option>
+                  @for(item of statusReservation; track $index){
+                    @if(item.status != "STATUS_PENALTY" && item.status != "STATUS_CANCELED"){
+                      <option [value]="item.status" [selected]="item.status == detailItem?.status">{{item.status | statusReservation}}</option>
+                    }
+                  }
+                </select>
+
+                <button class="btn btn-primary w-100 my-3" data-bs-dismiss="modal" (click)="onClickUpdateStatus()">Konfirmasi</button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+</app-template-admin>

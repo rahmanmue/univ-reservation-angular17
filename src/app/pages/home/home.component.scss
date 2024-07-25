@@ -1,0 +1,33 @@
+.accordion-header button {
+    background-color: #034C62;
+    color: white;
+}
+
+.l-tb-rad{
+    border-top-left-radius:20px;
+    border-bottom-left-radius:20px;
+}
+.r-tb-rad{
+    border-top-right-radius:20px;
+    border-bottom-right-radius:20px;
+}
+
+.form-select:focus{
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.select-custom , .select-custom > .opt{
+    padding: 12px 0px;
+}
+
+
+.custom-btn{
+    padding: 12px 20px;
+    border: none;
+    border-radius: 14px;
+}
+
+.custom-btn:active{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;;
+}
